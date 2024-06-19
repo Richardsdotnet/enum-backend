@@ -1,10 +1,41 @@
 package com.semicolon.enum_backend;
-
-
+import com.semicolon.enum_backend.models.Role;
+import com.semicolon.enum_backend.models.User;
+import com.semicolon.enum_backend.services.EnumAdminService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootTest
 
 public class AdminServiceTest {
-    private AdminService adminService;
+    @Autowired
+    private EnumAdminService enumAdminService;
+    @Autowired
+    private List<User> users = new ArrayList<>();
+
+
+
+
+    @BeforeEach
+    void setUp(){
+        enumAdminService = new EnumAdminService();
+
+    }
+
+    @Test
+    public void testAdminFound(){
+        User admin = new User();
+        admin.setFirstName("Ritchie");
+        admin.setRole(Role.ADMIN);
+        users.add(admin);
+
+
+
+    }
+
 }
