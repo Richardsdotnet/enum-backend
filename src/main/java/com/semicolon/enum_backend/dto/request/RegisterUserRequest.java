@@ -3,8 +3,9 @@ package com.semicolon.enum_backend.dto.request;
 import com.semicolon.enum_backend.models.Course;
 import com.semicolon.enum_backend.models.Role;
 import com.semicolon.enum_backend.models.Status;
-import jakarta.persistence.Enumerated;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -12,8 +13,9 @@ import java.util.List;
 
 @Setter
 @Getter
-
-public class CreateUserRequest {
+@AllArgsConstructor
+@NoArgsConstructor
+public class RegisterUserRequest {
     private String firstName;
     private String lastName;
     private String email;

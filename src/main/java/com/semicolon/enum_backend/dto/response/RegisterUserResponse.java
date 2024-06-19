@@ -8,8 +8,14 @@ import lombok.Setter;
 @Setter
 @RequiredArgsConstructor
 
-public class CreateUserResponse {
+public class RegisterUserResponse {
+    public RegisterUserResponse(String message) {
+        this.message = message;
+    }
+
     private String message;
     private User user;
+
+
 
 }
