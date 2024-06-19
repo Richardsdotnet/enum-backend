@@ -4,22 +4,38 @@ import com.semicolon.enum_backend.dto.request.CreateUserRequest;
 import com.semicolon.enum_backend.dto.response.CreateUserResponse;
 import com.semicolon.enum_backend.exceptions.UserAlreadyExistException;
 import com.semicolon.enum_backend.models.User;
+import com.semicolon.enum_backend.repositories.UserRepository;
 import jakarta.persistence.Entity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 
 public class EnumUserService implements UserService{
+    private UserRepository userRepository;
 
     @Override
     public CreateUserResponse createUser(CreateUserRequest createUserRequest) throws UserAlreadyExistException {
-        return null;
+        Optional<User> existingUser = userRepository.findByEmail(createUserRequest.getEmail());
+
+        CreateUserResponse response = new CreateUserResponse();
+        if (existingUser.isPresent()) {
+            response.setMessage("User already exists");
+        } else {
+            User user = new User();
+            BeanUtils.copyProperties(createUserRequest, user);
+            userRepository.save(user);
+            response.setMessage("Successful");
+        }
+
+        return response;
     }
 
     @Override

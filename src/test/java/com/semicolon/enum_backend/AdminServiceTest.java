@@ -33,6 +33,7 @@ public class AdminServiceTest {
     public void testAdminFound(){
         User admin = new User();
         admin.setFirstName("Ritchie");
+        admin.setEmail("rich@gmail.com");
         admin.setRole(Role.ADMIN);
         users.add(admin);
 
