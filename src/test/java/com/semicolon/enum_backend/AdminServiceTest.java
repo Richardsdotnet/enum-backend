@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 @SpringBootTest
 
 public class AdminServiceTest {
@@ -33,6 +35,11 @@ public class AdminServiceTest {
         admin.setFirstName("Ritchie");
         admin.setRole(Role.ADMIN);
         users.add(admin);
+
+        User foundAdmin = enumAdminService.findAdminByFirstName("Ritchie");
+        assertThat(foundAdmin).isNotNull();
+        assertThat(foundAdmin.getFirstName()).isEqualTo("Ritchie");
+        assertThat(foundAdmin.getRole()).isEqualTo(Role.ADMIN);
 
 
 
