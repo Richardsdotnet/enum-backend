@@ -1,18 +1,15 @@
-package com.semicolon.enum_backend.models;
+package com.semicolon.enum_backend.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.semicolon.enum_backend.models.Role;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Setter
 @Getter
+public class RegisterOrganizationRequest {
 
-public class Organization {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String cac;

@@ -21,9 +21,12 @@ public class Cohort {
     private String Description;
     @Enumerated(value = EnumType.STRING)
     private Program program;
+    private String programType;
     private String startDate;
     private String endDate;
     private  String message;
+    private String avatar;
+
 
     public Cohort(String message) {
         this.message = message;

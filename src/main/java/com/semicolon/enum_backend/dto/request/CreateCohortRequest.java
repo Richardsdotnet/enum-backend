@@ -20,4 +20,5 @@ public class CreateCohortRequest {
     private String program;
     private String startDate;
     private String endDate;
+    private String avatar;
 }
