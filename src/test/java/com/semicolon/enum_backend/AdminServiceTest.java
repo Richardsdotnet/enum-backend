@@ -1,16 +1,14 @@
 package com.semicolon.enum_backend;
+
 import com.semicolon.enum_backend.models.Role;
 import com.semicolon.enum_backend.models.User;
 import com.semicolon.enum_backend.repositories.UserRepository;
-import com.semicolon.enum_backend.services.EnumAdminService;
 import com.semicolon.enum_backend.services.EnumUserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -40,13 +38,18 @@ public class AdminServiceTest {
         admin.setFirstName("Rich");
         admin.setEmail("rich@gmail.com");
         admin.setRole(Role.ADMIN);
-        userRepository.save(admin);
+        userService.registerUser(admin);
+//        userRepository.save(admin);
 
         Optional<User> foundAdmin = userRepository.findByFirstName("Rich");
         assertThat(foundAdmin).isPresent();
-        assertThat(foundAdmin.get().getFirstName()).isEqualTo("Rich");
-        assertThat(foundAdmin.get().getRole().equals(Role.ADMIN));
 
+        foundAdmin.ifPresent(user -> {
+            assertThat(foundAdmin.get().getFirstName()).isEqualTo("Rich");
+            assertThat(foundAdmin.get().getRole()).isEqualTo(Role.ADMIN);
+
+
+        });
 
 
 

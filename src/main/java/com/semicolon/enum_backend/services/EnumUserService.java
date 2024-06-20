@@ -25,6 +25,7 @@ public class EnumUserService implements UserService{
         Optional<User> existingUser = userRepository.findByEmail(registerUserRequest.getEmail());
 
         RegisterUserResponse response = new RegisterUserResponse();
+
         if (existingUser.isPresent()) {
             response.setMessage("User already exists");
         } else {
