@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 import static jakarta.persistence.GenerationType.AUTO;
 
 @Entity
@@ -26,6 +28,7 @@ public class Cohort {
     private String endDate;
     private  String message;
     private String avatar;
+
 
 
     public Cohort(String message) {

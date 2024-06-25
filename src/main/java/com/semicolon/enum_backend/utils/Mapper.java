@@ -15,6 +15,16 @@ import java.time.LocalDate;
 
 public class Mapper {
 
+        public User mapUserRegistration(RegisterUserRequest request){
+            User user = new User();
+            user.setFirstName(request.getFirstName());
+            user.setFirstName(request.getFirstName());
+            user.setEmail(request.getEmail());
+            user.setRole(request.getRole());
+            user.setPassword(request.getPassword());
+            return user;
+        }
+
 
         public Cohort mapCohort(CreateCohortRequest createCohortRequest) {
             Cohort newCohort = new Cohort();
@@ -55,20 +65,20 @@ public class Mapper {
             return organization;
         }
 
-        public Instructor mapInstructor(RegisterUserRequest registerInstructor) {
-            Instructor instructor = new Instructor();
-            instructor.setFirstName(registerInstructor.getFirstName());
-            instructor.setLastName(registerInstructor.getLastName());
-            instructor.setEmail(registerInstructor.getEmail());
-            String encodedPassword = getEncryptedPassword(registerInstructor);
-            instructor.setPassword(encodedPassword);
-            instructor.setRole(registerInstructor.getRole());
-            instructor.setOrganizationId(registerInstructor.getOrganizationId());
-            instructor.setDateAdded(LocalDate.now());
-            instructor.setCourses(registerInstructor.getCourses());
-            instructor.setInstructorStatus(Status.ACTIVE);
-            return instructor;
-        }
+//        public Instructor mapInstructor(RegisterUserRequest registerInstructor) {
+//            Instructor instructor = new Instructor();
+//            instructor.setFirstName(registerInstructor.getFirstName());
+//            instructor.setLastName(registerInstructor.getLastName());
+//            instructor.setEmail(registerInstructor.getEmail());
+//            String encodedPassword = getEncryptedPassword(registerInstructor);
+//            instructor.setPassword(encodedPassword);
+//            instructor.setRole(registerInstructor.getRole());
+//            instructor.setOrganizationId(registerInstructor.getOrganizationId());
+//            instructor.setDateAdded(LocalDate.now());
+//            instructor.setCourses(registerInstructor.getCourses());
+//            instructor.setInstructorStatus(Status.ACTIVE);
+//            return instructor;
+//        }
 
         public User mapLearner(RegisterUserRequest registerLearner) {
             Learner learner = new Learner();

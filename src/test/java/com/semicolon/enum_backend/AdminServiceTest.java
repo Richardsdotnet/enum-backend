@@ -1,8 +1,8 @@
 package com.semicolon.enum_backend;
 
+import com.semicolon.enum_backend.dto.request.RegisterUserRequest;
 import com.semicolon.enum_backend.models.Role;
 import com.semicolon.enum_backend.models.User;
-import com.semicolon.enum_backend.repositories.UserRepository;
 import com.semicolon.enum_backend.services.EnumUserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,10 +17,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class AdminServiceTest {
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
     private EnumUserService userService;
-
 
 
 
@@ -28,25 +25,28 @@ public class AdminServiceTest {
 
     @BeforeEach
     void setUp(){
-        userService = new EnumUserService();
+
 
     }
 
     @Test
     public void testAdminFound(){
-        User admin = new User();
-        admin.setFirstName("Rich");
-        admin.setEmail("rich@gmail.com");
-        admin.setRole(Role.ADMIN);
-        userService.registerUser(admin);
-//        userRepository.save(admin);
 
-        Optional<User> foundAdmin = userRepository.findByFirstName("Rich");
+        RegisterUserRequest admin = new RegisterUserRequest();
+        admin.setFirstName("Richie");
+        admin.setLastName("ATR");
+        admin.setEmail("rh@gmail.com");
+        admin.setRole(Role.INSTRUCTOR);
+        admin.setPassword("123454");
+        userService.registerUser(admin);
+        assertThat(admin).isNotNull();
+
+        Optional<User> foundAdmin = userService.findByEmail("rh@gmail.com");
         assertThat(foundAdmin).isPresent();
 
         foundAdmin.ifPresent(user -> {
-            assertThat(foundAdmin.get().getFirstName()).isEqualTo("Rich");
-            assertThat(foundAdmin.get().getRole()).isEqualTo(Role.ADMIN);
+            assertThat(foundAdmin.get().getFirstName()).isEqualTo("Richie");
+            assertThat(foundAdmin.get().getRole()).isEqualTo(Role.INSTRUCTOR);
 
 
         });
