@@ -9,6 +9,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 import static jakarta.persistence.GenerationType.AUTO;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @AllArgsConstructor
@@ -18,7 +19,7 @@ import static jakarta.persistence.GenerationType.AUTO;
 
 public class Learner extends User {
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private int noOfPrograms;
     @Enumerated(EnumType.STRING)

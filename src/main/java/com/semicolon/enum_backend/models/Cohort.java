@@ -5,10 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
-
-import static jakarta.persistence.GenerationType.AUTO;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @AllArgsConstructor
@@ -17,17 +14,18 @@ import static jakarta.persistence.GenerationType.AUTO;
 @Setter
 public class Cohort {
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String name;
     private String Description;
     @Enumerated(value = EnumType.STRING)
     private Program program;
-    private String programType;
     private String startDate;
     private String endDate;
-    private  String message;
     private String avatar;
+
+    private String programType;
+    private  String message;
 
 
 

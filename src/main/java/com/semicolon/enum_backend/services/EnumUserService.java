@@ -7,7 +7,6 @@ import com.semicolon.enum_backend.exceptions.UserNotFoundException;
 import com.semicolon.enum_backend.models.User;
 import com.semicolon.enum_backend.repositories.UserRepository;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -24,9 +23,7 @@ public class EnumUserService implements UserService{
 
     @Override
     public RegisterUserResponse registerUser(RegisterUserRequest registerUserRequest) throws UserAlreadyExistException {
-
         Optional<User> existingUser = userRepository.findByEmail(registerUserRequest.getEmail());
-
         RegisterUserResponse response = new RegisterUserResponse();
 
         if (existingUser.isPresent()) {
@@ -52,7 +49,7 @@ public class EnumUserService implements UserService{
     }
 
     @Override
-    public User findById(Long instructorId) {
+    public User findById(Long id) {
         return null;
     }
 

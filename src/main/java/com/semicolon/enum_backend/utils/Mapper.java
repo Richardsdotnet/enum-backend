@@ -51,19 +51,19 @@ public class Mapper {
             return course;
         }
 
-        public Organization mapOrganisation(RegisterOrganizationRequest registerOrganizationRequest) {
-            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            String encodedPassword = passwordEncoder.encode(registerOrganizationRequest.getPassword());
-
-            Organization organization = new Organization();
-            organization.setName(registerOrganizationRequest.getName());
-            organization.setCac(registerOrganizationRequest.getCac());
-            organization.setEmail(registerOrganizationRequest.getEmail());
-            organization.setPassword(encodedPassword);
-            organization.setRole(Role.ORGANIZATION);
-
-            return organization;
-        }
+//        public Organization mapOrganisation(RegisterOrganizationRequest registerOrganizationRequest) {
+//            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//            String encodedPassword = passwordEncoder.encode(registerOrganizationRequest.getPassword());
+//
+//            Organization organization = new Organization();
+//            organization.setName(registerOrganizationRequest.getName());
+//            organization.setCac(registerOrganizationRequest.getCac());
+//            organization.setEmail(registerOrganizationRequest.getEmail());
+//            organization.setPassword(encodedPassword);
+//            organization.setRole(Role.ORGANIZATION);
+//
+//            return organization;
+//        }
 
 //        public Instructor mapInstructor(RegisterUserRequest registerInstructor) {
 //            Instructor instructor = new Instructor();

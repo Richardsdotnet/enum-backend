@@ -13,8 +13,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-//@AllArgsConstructor
-//@NoArgsConstructor
 @Getter
 @Setter
 
